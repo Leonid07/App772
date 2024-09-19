@@ -28,10 +28,18 @@ workflows:
           - pattern: 'develop'
             include: true
             source: true
-      scripts:
+        scripts:
+          - name: Initialize Podfile (if missing)
+        script: |
+          if [ ! -f "./ios/Podfile" ]; then
+          cd ios
+          pod init
+          fi
         - name: Install pods
-          script: |
-            pod install
+        script: |
+          cd ios
+          pod install
+
         - name: Set up keychain to be used for codesigning using Codemagic CLI 'keychain' command
           script: |
             keychain initialize
