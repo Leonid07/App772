@@ -28,14 +28,14 @@ workflows:
           - pattern: 'develop'
             include: true
             source: true
-        scripts:
-          - name: Initialize Podfile (if missing)
+    scripts:
+      - name: Initialize Podfile (if missing)
         script: |
           if [ ! -f "./ios/Podfile" ]; then
-          cd ios
-          pod init
+            cd ios
+            pod init
           fi
-        - name: Install pods
+      - name: Install pods
         script: |
           cd ios
           pod install
