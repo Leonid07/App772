@@ -9,9 +9,6 @@ extern "C" void RegisterStaticallyLinkedModulesGranular()
 	void RegisterModule_AI();
 	RegisterModule_AI();
 
-	void RegisterModule_AndroidJNI();
-	RegisterModule_AndroidJNI();
-
 	void RegisterModule_Animation();
 	RegisterModule_Animation();
 

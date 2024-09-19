@@ -15,18 +15,14 @@ void UnityAdsInitialize(const char * gameId, bool testMode, void *listenerPtr) {
     [UnityAds initialize:[NSString stringWithUTF8String:gameId] testMode:testMode initializationDelegate:listener];
 }
 
-void UnityAdsLoad(const char * placementId, const char * objectId, void *listenerPtr) {
+void UnityAdsLoad(const char * placementId, void *listenerPtr) {
     UnityAdsLoadListener *listener = listenerPtr ? (__bridge UnityAdsLoadListener *)listenerPtr : nil;
-    UADSLoadOptions *options = [[UADSLoadOptions alloc] init];
-    [options setObjectId:[NSString stringWithUTF8String:objectId]];
-    [UnityAds load:[NSString stringWithUTF8String:placementId] options:options loadDelegate:listener];
+    [UnityAds load:[NSString stringWithUTF8String:placementId] loadDelegate:listener];
 }
 
-void UnityAdsShow(const char * placementId, const char * objectId, void *listenerPtr) {
+void UnityAdsShow(const char * placementId, void *listenerPtr) {
     UnityAdsShowListener *listener = listenerPtr ? (__bridge UnityAdsShowListener *)listenerPtr : nil;
-    UADSShowOptions *options = [[UADSShowOptions alloc] init];
-    [options setObjectId:[NSString stringWithUTF8String:objectId]];
-    [UnityAds show:UnityGetGLViewController() placementId:NSSTRING_OR_EMPTY(placementId)  options:options showDelegate:listener];
+    [UnityAds show:UnityGetGLViewController() placementId:NSSTRING_OR_EMPTY(placementId) showDelegate:listener];
 }
 
 bool UnityAdsGetDebugMode() {
